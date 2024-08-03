@@ -1,0 +1,1 @@
+Challenger encriptador Text
