@@ -13,8 +13,14 @@ html, body {
 .contenido {
     display: flex;
     flex: 1;
-    padding: 2% 2% 2% 12%;
-    width: 86%;
+    padding: 2% 2% 2% 10%;
+    width: 88%;
+}
+
+.logo-alura {
+    background-image: url("../assets/logo-alura.png");
+    width: 120px;
+    height: 48px;
 }
 
 
@@ -67,4 +73,32 @@ textarea {
 
 .texto_titulo {
     font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+
+    .contenido {
+        flex-direction: column;
+        gap: 4rem;
+        padding: 4.5rem 2.5rem 2.5rem 2.5rem;
+    }
+
+    .contenido__seccion__izq {
+        padding: 0;
+    }
+
+    .logo-alura {
+        background-image: url("../assets/logo-alura-tablet.png");
+        width: 31px;
+        height: 51px;
+    }
+
+    .imagen__persona {
+        display: none;
+    }
+
+}
+
+@media (max-width: 375px) {
+
 }
