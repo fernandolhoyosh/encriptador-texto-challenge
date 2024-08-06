@@ -10,11 +10,18 @@
     <main class="contenido">
         <section class="contenido__seccion__izq">
             <textarea name="" id="" placeholder="Ingrese el texto aqui ..."></textarea>
-            <button id="btn-encriptar">Encriptar</button>
-            <button id="btn_desencriptar">Desencriptar</button>
+            <span>Solo letras minúsculas y sin acentos</span>
+            <div class="contenido__seccion__izq__div__botones">
+                <button class="botones_seccion_izq" id="btn-encriptar">Encriptar</button>
+                <button class="botones_seccion_izq" id="btn-desencriptar">Desencriptar</button>
+            </div>
         </section>
         <section class="contenido__seccion__der">
-            <img src="assets/img-persona.png" alt="">
+            <img class="imagen__persona" src="assets/img-persona.png" alt="">
+            <div class="contenedor__textos__seccion__der">
+                <p class="texto_titulo">Ningún mensaje fue encontrado</p>
+                <p class="texto_descripcion">Ingresa el texto que desees encriptar o desencriptar.</p>
+            </div>
         </section>
     </main>
     <footer>
