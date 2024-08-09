@@ -1,13 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --color-body: #EFF1FA;
+    --color-border-boton: 1px solid #0A3871;
+    --color-boton-encriptar: #0A3871;
+    --color-boton-desencriptar: #EFF1FA;
+    --color-boton-encriptar-hover:#052051;
+    --color-boton-desencriptar-hover:#D8DFE8;
+    --color-fuente-primaria: #0A3871;
+    --color-fuente-secundaria:#495057;
+    --color-fuente-terciario:#343A40;
+    --fuente-Inter: "Inter", sans-serif;
+}
+
 * {
     padding: 0;
     margin: 0;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: var(--color-body);
 }
 
 .contenido {
@@ -17,12 +33,11 @@ html, body {
     width: 88%;
 }
 
-.logo-alura {
+.logo__alura {
     background-image: url("../assets/logo-alura.png");
     width: 120px;
     height: 48px;
 }
-
 
 .contenido__seccion__izq {
     display: flex;
@@ -35,7 +50,21 @@ textarea {
     flex: 1;
     width: 100%;
     box-sizing: border-box;
+    color: var(--color-fuente-primaria);
     font-size: 2rem;
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    background-color: var(--color-body);
+    border: 0;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none; /* Elimina el borde por defecto en focus */
+}
+
+textarea::placeholder {
+    color: var(--color-fuente-primaria) /* Cambia el color del texto del placeholder */
 }
 
 .contenido__seccion__izq__div__botones {
@@ -47,6 +76,29 @@ textarea {
     flex: 1;
     border-radius: 24px;
     padding: 24px;
+    border: var(--color-border-boton);
+    cursor: pointer;
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#btn-encriptar {
+    background-color: var(--color-boton-encriptar);
+    color: white;
+}
+
+#btn-desencriptar {
+    background-color: var(--color-boton-desencriptar);
+    color: #0A3871;
+}
+
+#btn-encriptar:hover {
+    background-color: var(--color-boton-encriptar-hover);
+}
+
+#btn-desencriptar:hover {
+    background-color: var(--color-boton-desencriptar-hover);
 }
 
 .contenido__seccion__der {
@@ -54,9 +106,10 @@ textarea {
     flex-direction: column;
     justify-content: center;
     gap: 32px;
-    width: auto;
+    width: 22%;
     border-radius: 32px;
     padding: 0 2rem;
+    background-color: white;
 }
 
 .imagen__persona {
@@ -68,11 +121,20 @@ textarea {
     flex-direction: column;
     gap: 16px;
     text-align: center;
-    padding: 10%;
+    padding: 5%;
+    font-family: var(--fuente-Inter);
 }
 
 .texto_titulo {
+    font-weight: bold;
     font-size: 1.5rem;
+    color: var(--color-fuente-terciario);
+}
+
+.texto_descripcion {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-fuente-secundaria);
 }
 
 .contenido__seccion__desencriptado {
@@ -80,14 +142,33 @@ textarea {
     flex-direction: column;
     justify-content: space-between;
     gap: 32px;
-    width: 20%;
+    width: 22%;
     border-radius: 32px;
     padding: 2rem;
+    background-color: white;
+}
+
+.texto_desencriptado {
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-fuente-secundaria);
 }
 
 #btn-copiar {
     border-radius: 24px;
     padding: 24px;
+    background-color: var(--color-boton-desencriptar);
+    color: #0A3871;
+    border: var(--color-border-boton);
+    cursor: pointer;
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#btn-copiar:hover {
+    background-color: var(--color-boton-desencriptar-hover);
 }
 
 @media (max-width: 1320px) {
@@ -140,7 +221,7 @@ textarea {
         width: auto;
     }
 
-    .logo-alura {
+    .logo__alura {
         background-image: url("../assets/logo-alura-tablet.png");
         width: 31px;
         height: 51px;
@@ -154,6 +235,10 @@ textarea {
 
 @media (max-width: 375px) {
 
+    /* html, body {
+        height: 150%;
+    } */
+
     .contenido {
         flex-direction: column;
         padding: 1.5rem 1rem 1rem 1rem;
@@ -164,11 +249,20 @@ textarea {
         height: 48px;
     }
 
+    /* .contenido__seccion__izq {
+        height: auto;
+    }
+ */
     .contenido__seccion__izq__div__botones {
         flex-direction: column;
     }
 
     .contenedor__textos__seccion__der {
         padding: 8%;
+    }
+
+    .contenido__seccion__desencriptado {
+        width: auto;
+        height: auto;
     }
 }
