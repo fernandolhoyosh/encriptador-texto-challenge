@@ -46,6 +46,25 @@ html, body {
     padding: 8% 5rem 2rem 0;
 }
 
+.contenido__span__alerta {
+    display: flex;
+    gap: 8px;
+    padding: 16px 0;
+}
+
+#icono-span {
+    background-image: url("../assets/icono-exclamacion.png");
+    width: 16px;
+    height: 16px;
+}
+
+#texto-span {
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--color-fuente-secundaria);
+}
+
 textarea {
     flex: 1;
     width: 100%;
@@ -169,6 +188,16 @@ textarea::placeholder {
 
 #btn-copiar:hover {
     background-color: var(--color-boton-desencriptar-hover);
+}
+
+footer {
+    background-color: #AAB2D5;
+    font-family: var(--fuente-Inter);
+    font-weight: 400;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    padding: 6px;
 }
 
 @media (max-width: 1320px) {
