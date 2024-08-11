@@ -71,3 +71,13 @@ startApp();
       x.style.display = 'none';
     }
   } */
+
+
+/* 
+ACTIVIDADES POR HACER
+- validar input vacio que no cambie imagen principal
+- ajustar texto que no se ajusta al padre en el contenedor de desencriptacion
+- ajustar css para textarea en movil y tablet (height)
+- desarrollar logica boton copiar
+- opcional agregar animaciones
+*/
