@@ -80,11 +80,21 @@ const mostrarElementos = (cadena) => {
   const panelPrimario = document.querySelector(".contenido__seccion__der");
   const panelSecundario = document.querySelector(".contenido__seccion__desencriptado");
 
+  const contenedorTexto = document.querySelector(".contenedor__textos__seccion__der");
+
   if (inputTextareaUsuario.value == "") {
-    panelPrimario.setAttribute("style", "display: flex");
     panelSecundario.style.display = "none";
+    panelPrimario.setAttribute("style", "display: flex");
+
+    // Añadir la clase que activa la animación
+    contenedorTexto.classList.add("shake");
+
+    // Remover la clase después de que la animación termine para permitir futuras animaciones
+    setTimeout(() => {
+      contenedorTexto.classList.remove("shake");
+    }, 500); // 500ms coincide con la duración de la animación
   } else {
-    console.log(cadena)
+    console.log(cadena);
     panelPrimario.setAttribute("style", "display: none");
     panelSecundario.style.display = "flex";
     mostrarCadena.value = cadena;
@@ -99,22 +109,18 @@ function autoAjustarAlturaTextarea(textarea) {
   textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta la altura al contenido
 }
 
-
-
 startApp();
-
-/* function myFunction() {
-    var x = document.getElementById('myDIV');
-    if (x.style.display === 'none') {
-      x.style.display = 'block';
-    } else {
-      x.style.display = 'none';
-    }
-  } */
-
 
 /* 
 ACTIVIDADES POR HACER
 - ajustar css para textarea en movil y tablet (height)
 - opcional agregar animaciones
+*/
+
+/* 
+lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Orci montes, sit et diam risus scelerisque vitae est.
+                Tortor maecenas nunc ut laoreet. Eget diam mauris quam
+                quisque ut eget fringilla sit elit. Libero, sodales duis
+                fames id diam feugiat aliquet non egestas.
 */
