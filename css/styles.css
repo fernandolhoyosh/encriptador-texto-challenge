@@ -189,10 +189,38 @@ textarea:focus {
     font-family: var(--fuente-Inter);
     font-weight: 400;
     font-size: 16px;
+    position: relative;
+    overflow: hidden;
 }
 
 #btn-copiar:hover {
     background-color: var(--color-boton-desencriptar-hover);
+}
+
+#btn-copiar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-boton-encriptar);
+    transition: left 0.5s;
+    z-index: 0;
+}
+
+#btn-copiar span {
+    position: relative;
+    z-index: 1;
+}
+
+#btn-copiar.copiado::before {
+    left: 0;
+    transition: left 0.5s;
+}
+
+#btn-copiar.copiado {
+    color: white;
 }
 
 footer {

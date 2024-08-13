@@ -23,10 +23,21 @@ function startApp () {
     mostrarElementos(desencriptarTexto(cadenaUsuario));
   });
 
-  document.getElementById("btn-copiar").addEventListener("click", async() => {
+  const btnCopiar = document.getElementById("btn-copiar");
+  btnCopiar.addEventListener("click", async() => {
     try {
       mostrarCadena.select();
       await navigator.clipboard.writeText(mostrarCadena.value);
+
+      const originalText = btnCopiar.querySelector('.texto_boton_copiar').textContent;
+      btnCopiar.querySelector('.texto_boton_copiar').textContent = 'Texto copiado 📑';
+      btnCopiar.classList.add('copiado');
+
+        setTimeout(() => {
+          btnCopiar.querySelector('.texto_boton_copiar').textContent = originalText;
+          btnCopiar.classList.remove('copiado');
+        }, 3000);
+
     } catch (error) {
       console.error(error);
     }
@@ -115,6 +126,7 @@ startApp();
 ACTIVIDADES POR HACER
 - ajustar css para textarea en movil y tablet (height)
 - opcional agregar animaciones
+- agregar redes sociales en footer pie de pagina
 */
 
 /* 
