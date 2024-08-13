@@ -1,34 +1,55 @@
 let cadenaUsuario = "";
+const inputTextareaUsuario = document.querySelector(".contenido__texto__usuario");
+const mostrarCadena = document.querySelector(".texto_desencriptado");
+
+window.addEventListener('resize', () => {
+  autoAjustarAlturaTextarea(mostrarCadena);
+});
 
 function startApp () {
+  
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('textarea').addEventListener('input', validarCadena); // Seleccionar el textarea y agregar el evento 'input'
+    inputTextareaUsuario.focus();
+    inputTextareaUsuario.addEventListener('input', validarCadena); // Seleccionar el textarea y agregar el evento 'input'
   });
+
   document.getElementById("btn-encriptar").addEventListener("click", function() {
-    cadenaUsuario = document.querySelector("textarea").value;
+    cadenaUsuario = inputTextareaUsuario.value;
     mostrarElementos(encriptarTexto(cadenaUsuario));
   });
+
   document.getElementById("btn-desencriptar").addEventListener("click", function() {
-    cadenaUsuario = document.querySelector("textarea").value;
+    cadenaUsuario = inputTextareaUsuario.value;
     mostrarElementos(desencriptarTexto(cadenaUsuario));
+  });
+
+  document.getElementById("btn-copiar").addEventListener("click", async() => {
+    try {
+      mostrarCadena.select();
+      await navigator.clipboard.writeText(mostrarCadena.value);
+    } catch (error) {
+      console.error(error);
+    }
   });
 }
 
+
+
 function validarCadena(e) {
- /*  const regex = /^[a-zñ]+( [a-zñ]+)*( )?$/; //expresion regular para validar solo minusculas, letra ñ, minimo un espacio entre palabras y no puede empezar con espacio
+  /*  const regex = /^[a-zñ]+( [a-zñ]+)*( )?$/; //expresion regular para validar solo minusculas, letra ñ, minimo un espacio entre palabras y no puede empezar con espacio
   const input = e.target.value;
   if (!regex.test(input)) {
       e.target.value = input.slice(0, -1); // Elimina el último carácter ingresado
   } */
 
- /* e.target.value = e.target.value.replace(/[^a-zñ ]+/g, ''); */
+  /* e.target.value = e.target.value.replace(/[^a-zñ ]+/g, ''); */
 
- let value = e.target.value;
+  let value = e.target.value;
   // Elimina caracteres no permitidos
-  value = value.replace(/[^a-zñ ]+/g, '');
+  value = value.replace(/[^a-zñ ]+/g, "");
   // Elimina múltiples espacios y asegura que no empiece con espacios
-  value = value.replace(/^\s+/g, ''); // Elimina espacios al inicio
-  value = value.replace(/\s{2,}/g, ' ');   // Reemplaza múltiples espacios con un solo espacio
+  value = value.replace(/^\s+/g, ""); // Elimina espacios al inicio
+  value = value.replace(/\s{2,}/g, " "); // Reemplaza múltiples espacios con un solo espacio
   e.target.value = value;
 }
 
@@ -55,11 +76,30 @@ const desencriptarTexto = (cadena) => {
 };
 
 const mostrarElementos = (cadena) => {
-  document.querySelector(".contenido__seccion__der").setAttribute("style", "display: none");
-  document.querySelector(".contenido__seccion__desencriptado").style.display = "flex";
-  const mostrarCadena = document.querySelector(".texto_desencriptado");
-  mostrarCadena.innerHTML = cadena;
+
+  const panelPrimario = document.querySelector(".contenido__seccion__der");
+  const panelSecundario = document.querySelector(".contenido__seccion__desencriptado");
+
+  if (inputTextareaUsuario.value == "") {
+    panelPrimario.setAttribute("style", "display: flex");
+    panelSecundario.style.display = "none";
+  } else {
+    console.log(cadena)
+    panelPrimario.setAttribute("style", "display: none");
+    panelSecundario.style.display = "flex";
+    mostrarCadena.value = cadena;
+    autoAjustarAlturaTextarea(mostrarCadena);
+    inputTextareaUsuario.value = "";
+  }
+  inputTextareaUsuario.focus();
 }
+
+function autoAjustarAlturaTextarea(textarea) {
+  textarea.style.height = 'auto'; // Resetea la altura
+  textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta la altura al contenido
+}
+
+
 
 startApp();
 
@@ -75,9 +115,6 @@ startApp();
 
 /* 
 ACTIVIDADES POR HACER
-- validar input vacio que no cambie imagen principal
-- ajustar texto que no se ajusta al padre en el contenedor de desencriptacion
 - ajustar css para textarea en movil y tablet (height)
-- desarrollar logica boton copiar
 - opcional agregar animaciones
 */
