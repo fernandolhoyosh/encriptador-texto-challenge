@@ -10,7 +10,7 @@ function startApp () {
   
   document.addEventListener('DOMContentLoaded', () => {
     inputTextareaUsuario.focus();
-    inputTextareaUsuario.addEventListener('input', validarCadena); // Seleccionar el textarea y agregar el evento 'input'
+    inputTextareaUsuario.addEventListener('input', validarCadena);
   });
 
   document.getElementById("btn-encriptar").addEventListener("click", function() {
@@ -62,6 +62,7 @@ function validarCadena(e) {
   value = value.replace(/^\s+/g, ""); // Elimina espacios al inicio
   value = value.replace(/\s{2,}/g, " "); // Reemplaza múltiples espacios con un solo espacio
   e.target.value = value;
+  autoAjustarAlturaTextarea(inputTextareaUsuario);
 }
 
 const encriptarTexto = (cadena) => {
@@ -97,22 +98,21 @@ const mostrarElementos = (cadena) => {
     panelSecundario.style.display = "none";
     panelPrimario.setAttribute("style", "display: flex");
 
-    // Añadir la clase que activa la animación
+    // Añadir la clase que activa la animación del boton copiar
     contenedorTexto.classList.add("shake");
 
-    // Remover la clase después de que la animación termine para permitir futuras animaciones
+    // Remover la clase después de que la animación termine 
     setTimeout(() => {
       contenedorTexto.classList.remove("shake");
-    }, 500); // 500ms coincide con la duración de la animación
+    }, 500);
   } else {
     console.log(cadena);
     panelPrimario.setAttribute("style", "display: none");
     panelSecundario.style.display = "flex";
     mostrarCadena.value = cadena;
-    autoAjustarAlturaTextarea(mostrarCadena);
     inputTextareaUsuario.value = "";
+    autoAjustarAlturaTextarea(mostrarCadena);
   }
-  inputTextareaUsuario.focus();
 }
 
 function autoAjustarAlturaTextarea(textarea) {
@@ -127,12 +127,5 @@ ACTIVIDADES POR HACER
 - ajustar css para textarea en movil y tablet (height)
 - opcional agregar animaciones
 - agregar redes sociales en footer pie de pagina
-*/
-
-/* 
-lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Orci montes, sit et diam risus scelerisque vitae est.
-                Tortor maecenas nunc ut laoreet. Eget diam mauris quam
-                quisque ut eget fringilla sit elit. Libero, sodales duis
-                fames id diam feugiat aliquet non egestas.
+- validar caracteres especiales
 */

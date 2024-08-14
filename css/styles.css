@@ -73,7 +73,7 @@ textarea {
 }
 
 .contenido__texto__usuario {
-    flex: 1;
+    flex-grow: 1;
     width: 100%;
     color: var(--color-fuente-primaria);
     font-size: 2rem;
@@ -331,19 +331,13 @@ footer {
 
 /*ANIMACIONES/*
 
-/* Definir la animación de sacudón */
+/* Definicion de la animación de sacudón del mensaje no encontrado */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-20px); } /* Mayor distancia hacia la izquierda */
     50% { transform: translateX(20px); }  /* Mayor distancia hacia la derecha */
     75% { transform: translateX(-20px); } /* Mayor distancia hacia la izquierda */
     100% { transform: translateX(0); }     /* Regresa a la posición original */
-}
-
-/* Estilo para el párrafo */
-#myParagraph {
-    display: inline-block; /* Necesario para que la animación funcione correctamente */
-    transition: transform 0.3s ease; /* Para suavizar el efecto de la animación */
 }
 
 /* Clase que activa la animación */
