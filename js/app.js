@@ -36,7 +36,7 @@ function startApp () {
         setTimeout(() => {
           btnCopiar.querySelector('.texto_boton_copiar').textContent = originalText;
           btnCopiar.classList.remove('copiado');
-        }, 3000);
+        }, 1500);
 
     } catch (error) {
       console.error(error);
@@ -62,7 +62,6 @@ function validarCadena(e) {
   value = value.replace(/^\s+/g, ""); // Elimina espacios al inicio
   value = value.replace(/\s{2,}/g, " "); // Reemplaza múltiples espacios con un solo espacio
   e.target.value = value;
-  autoAjustarAlturaTextarea(inputTextareaUsuario);
 }
 
 const encriptarTexto = (cadena) => {
@@ -98,7 +97,7 @@ const mostrarElementos = (cadena) => {
     panelSecundario.style.display = "none";
     panelPrimario.setAttribute("style", "display: flex");
 
-    // Añadir la clase que activa la animación del boton copiar
+    // Añadir la clase que activa la animación de sacudido
     contenedorTexto.classList.add("shake");
 
     // Remover la clase después de que la animación termine 
