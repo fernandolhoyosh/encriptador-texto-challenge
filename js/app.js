@@ -1,13 +1,17 @@
+// Declaro variables y const globales
 let cadenaUsuario = "";
 const inputTextareaUsuario = document.querySelector(".contenido__texto__usuario");
 const mostrarCadena = document.querySelector(".texto_desencriptado");
 
+// Este evento resize redimensiona la altura del textarea derecho de acuerdo al tamaño del texto
 window.addEventListener('resize', () => {
   autoAjustarAlturaTextarea(mostrarCadena);
 });
 
+//Funcion principal de inicio de la logica del encriptador de texto
 function startApp () {
   
+  // Funciones para los eventos de los botones.
   document.addEventListener('DOMContentLoaded', () => {
     inputTextareaUsuario.focus();
     inputTextareaUsuario.addEventListener('input', validarCadena);
@@ -29,12 +33,11 @@ function startApp () {
       mostrarCadena.select();
       await navigator.clipboard.writeText(mostrarCadena.value);
 
-      const originalText = btnCopiar.querySelector('.texto_boton_copiar').textContent;
       btnCopiar.querySelector('.texto_boton_copiar').textContent = 'Texto copiado 📑';
       btnCopiar.classList.add('copiado');
 
         setTimeout(() => {
-          btnCopiar.querySelector('.texto_boton_copiar').textContent = originalText;
+          btnCopiar.querySelector('.texto_boton_copiar').textContent = 'Copiar';
           btnCopiar.classList.remove('copiado');
         }, 1500);
 
@@ -44,29 +47,13 @@ function startApp () {
   });
 }
 
-
-
+// Funcion para validar en tiempo real letras minusculas, sin acentos y algunos caracteres permitidos en el textarea del usuario
 function validarCadena(e) {
-  /*  const regex = /^[a-zñ]+( [a-zñ]+)*( )?$/; //expresion regular para validar solo minusculas, letra ñ, minimo un espacio entre palabras y no puede empezar con espacio
-  const input = e.target.value;
-  if (!regex.test(input)) {
-      e.target.value = input.slice(0, -1); // Elimina el último carácter ingresado
-  } */
-
-  /* e.target.value = e.target.value.replace(/[^a-zñ ]+/g, ''); */
-
-  /* let value = e.target.value;
-  // Elimina caracteres no permitidos
-  value = value.replace(/[^a-zñ ]+/g, "");
-  // Elimina múltiples espacios y asegura que no empiece con espacios
-  value = value.replace(/^\s+/g, ""); // Elimina espacios al inicio
-  value = value.replace(/\s{2,}/g, " "); // Reemplaza múltiples espacios con un solo espacio
-  e.target.value = value; */
-
   const textarea = e.target;
   textarea.value = textarea.value.toLowerCase().replace(/[^a-zñ\s.,¡!¿?]/g, '');
 }
 
+// Funcion para encriptar texto
 const encriptarTexto = (cadena) => {
   const cadenaEncriptada = cadena
     .replaceAll("e", "enter")
@@ -74,10 +61,10 @@ const encriptarTexto = (cadena) => {
     .replaceAll("a", "ai")
     .replaceAll("o", "ober")
     .replaceAll("u", "ufat");
-
   return cadenaEncriptada;
 };
 
+// Funcion para desencriptar texto
 const desencriptarTexto = (cadena) => {
   const cadenaDesencriptada = cadena
     .replaceAll("enter", "e")
@@ -85,15 +72,14 @@ const desencriptarTexto = (cadena) => {
     .replaceAll("ai", "a")
     .replaceAll("ober", "o")
     .replaceAll("ufat", "u");
-
   return cadenaDesencriptada;
 };
 
+//Funcion para visualizar los elementos en pantalla dependiendo de las funciones encriptar o desencriptar
 const mostrarElementos = (cadena) => {
 
   const panelPrimario = document.querySelector(".contenido__seccion__der");
   const panelSecundario = document.querySelector(".contenido__seccion__desencriptado");
-
   const contenedorTexto = document.querySelector(".contenedor__textos__seccion__der");
 
   if (cadena.trim() == "") {
@@ -118,6 +104,7 @@ const mostrarElementos = (cadena) => {
   }
 }
 
+//Funcion que ajusta el tamaño del textarea derecho de acuerdo a su contenido
 function autoAjustarAlturaTextarea(textarea) {
   textarea.style.height = 'auto'; // Resetea la altura
   textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta la altura al contenido
