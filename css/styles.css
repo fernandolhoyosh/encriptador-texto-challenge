@@ -75,7 +75,7 @@ textarea {
 .contenido__texto__usuario {
     flex-grow: 1;
     width: 100%;
-    min-height: 400px;
+    min-height: 300px;
     color: var(--color-fuente-primaria);
     font-size: 2rem;
     font-family: var(--fuente-Inter);
@@ -344,7 +344,7 @@ footer {
     }
 
     .contenido__texto__usuario {
-        min-height: 300px;
+        min-height: 200px;
     }
 }
 
