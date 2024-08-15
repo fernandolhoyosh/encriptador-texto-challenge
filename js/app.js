@@ -35,10 +35,12 @@ function startApp () {
 
       btnCopiar.querySelector('.texto_boton_copiar').textContent = 'Texto copiado 📑';
       btnCopiar.classList.add('copiado');
+      btnCopiar.disabled = true;
 
         setTimeout(() => {
           btnCopiar.querySelector('.texto_boton_copiar').textContent = 'Copiar';
           btnCopiar.classList.remove('copiado');
+          btnCopiar.disabled = false;
         }, 1500);
 
     } catch (error) {
@@ -47,7 +49,7 @@ function startApp () {
   });
 }
 
-// Funcion para validar en tiempo real letras minusculas, sin acentos y algunos caracteres permitidos en el textarea del usuario
+// Funcion para validar en tiempo real letras minusculas, sin acentos y algunos caracteres permitidos en el textarea del usuario con expresion regular
 function validarCadena(e) {
   const textarea = e.target;
   textarea.value = textarea.value.toLowerCase().replace(/[^a-zñ\s.,¡!¿?]/g, '');
