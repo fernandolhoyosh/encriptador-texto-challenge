@@ -112,11 +112,5 @@ function autoAjustarAlturaTextarea(textarea) {
   textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta la altura al contenido
 }
 
+//Iniciar la app
 startApp();
-
-/* 
-ACTIVIDADES POR HACER
-- opcional agregar animaciones
-- agregar redes sociales en footer pie de pagina
-- validar caracteres especiales
-*/

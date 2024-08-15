@@ -241,13 +241,26 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 footer {
-    background-color: #AAB2D5;
+    background-color: var(--color-boton-desencriptar-hover);
     font-family: var(--fuente-Inter);
     font-weight: 400;
-    font-size: 1rem;
-    color: white;
+    font-size: 0.8rem;
+    color: black;
     text-align: center;
-    padding: 6px;
+    padding: 10px;
+}
+
+.iconos-redes{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 0.3rem 0;
+}
+
+.iconos-redes a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #052051;
 }
 
 @media (max-width: 1320px) {
