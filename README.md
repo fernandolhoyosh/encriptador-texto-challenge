@@ -19,12 +19,15 @@ Este proyecto es una aplicación web diseñada para encriptar y desencriptar men
 ## Captura de Pantalla
 
 - `Vista PC`:
+  
 ![image](https://github.com/user-attachments/assets/263d53e4-3b34-47e8-9b1d-bf8c19a1529f)
 
 - `Vista Tablet`:
+  
 ![image](https://github.com/user-attachments/assets/5aaafe22-eb41-4f11-a3d0-e86266f82a6a)
 
 - `Vista movil`:
+  
 ![image](https://github.com/user-attachments/assets/95660744-2678-45d6-8a6b-1132baa32133)
 
 
