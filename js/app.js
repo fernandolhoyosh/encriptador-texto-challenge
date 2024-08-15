@@ -55,13 +55,16 @@ function validarCadena(e) {
 
   /* e.target.value = e.target.value.replace(/[^a-zñ ]+/g, ''); */
 
-  let value = e.target.value;
+  /* let value = e.target.value;
   // Elimina caracteres no permitidos
   value = value.replace(/[^a-zñ ]+/g, "");
   // Elimina múltiples espacios y asegura que no empiece con espacios
   value = value.replace(/^\s+/g, ""); // Elimina espacios al inicio
   value = value.replace(/\s{2,}/g, " "); // Reemplaza múltiples espacios con un solo espacio
-  e.target.value = value;
+  e.target.value = value; */
+
+  const textarea = e.target;
+  textarea.value = textarea.value.toLowerCase().replace(/[^a-zñ\s.,¡!¿?]/g, '');
 }
 
 const encriptarTexto = (cadena) => {
@@ -93,7 +96,8 @@ const mostrarElementos = (cadena) => {
 
   const contenedorTexto = document.querySelector(".contenedor__textos__seccion__der");
 
-  if (inputTextareaUsuario.value == "") {
+  if (cadena.trim() == "") {
+    inputTextareaUsuario.value = "";
     panelSecundario.style.display = "none";
     panelPrimario.setAttribute("style", "display: flex");
 
@@ -108,7 +112,7 @@ const mostrarElementos = (cadena) => {
     console.log(cadena);
     panelPrimario.setAttribute("style", "display: none");
     panelSecundario.style.display = "flex";
-    mostrarCadena.value = cadena;
+    mostrarCadena.value = cadena.trim().replace(/\s+/g, ' ');
     inputTextareaUsuario.value = "";
     autoAjustarAlturaTextarea(mostrarCadena);
   }
@@ -123,7 +127,6 @@ startApp();
 
 /* 
 ACTIVIDADES POR HACER
-- ajustar css para textarea en movil y tablet (height)
 - opcional agregar animaciones
 - agregar redes sociales en footer pie de pagina
 - validar caracteres especiales
