@@ -27,6 +27,7 @@ html, body {
 }
 
 .contenido {
+    max-width: 1200px;
     display: flex;
     flex: 1;
     padding: 2% 2% 2% 10%;
